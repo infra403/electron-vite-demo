@@ -41,4 +41,5 @@ In your electron bundler’s webpack config, you will need to exclude inclusion 
     "@temporalio/workflow"
   ]
 ```
-
+部署到生产环境时，需要先进行打包，worker引入的时候，需要引入打包后的文件，而不是源文件: https://github.com/infra403/electron-vite-demo/blob/main/src/worker/worker.ts#L11
+我现在是通过 npm run build:bundle 打包放到data目录下，然后将data目录打包到electron程序中，再通过相对路径引入。
